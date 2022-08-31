@@ -4,9 +4,14 @@
  * @projectName Data Structures and Algorithms
  */
 public class LinearSearch {
-    public static int search(int[] data, int target){
+
+    private LinearSearch() {
+    }
+
+    public static <E> int search(E[] data, E target){
         for(int i = 0; i < data.length; i++){
-            if(data[i] == target){
+//            需要判断值相等，故使用equals
+            if(data[i].equals(target)){
                 return i;
             }
         }
@@ -14,7 +19,7 @@ public class LinearSearch {
     }
 
     public static void main(String[] args) {
-        int[] data = {24, 18, 12, 8, 9, 66, 32, 4};
+        Integer[] data = {24, 18, 12, 8, 9, 66, 32, 4};
 
 //        LinearSearch ls = new LinearSearch();
         int res = LinearSearch.search(data, 66);
@@ -22,5 +27,12 @@ public class LinearSearch {
 
         int res2 = LinearSearch.search(data, 77);
         System.out.println(res2);
+
+        Student[] students = {new Student("wly"),
+                              new Student("Bobo"),
+                              new Student("Alice")};
+        Student bobo = new Student("Wly");
+        int res3 = LinearSearch.search(students, bobo);
+        System.out.println(res3);
     }
 }
