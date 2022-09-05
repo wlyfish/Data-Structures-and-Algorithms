@@ -34,5 +34,25 @@ public class LinearSearch {
         Student bobo = new Student("Wly");
         int res3 = LinearSearch.search(students, bobo);
         System.out.println(res3);
+
+        System.out.println("###########################");
+//        int n = 1000000;
+        int[] dataSize = {1000000, 10000000};
+
+        for(int n : dataSize){
+            data = ArrayGenerator.generateOrderedArray(n);
+            int res4 = 0;
+
+            long startTime = System.nanoTime();
+            for (int i = 0; i < 100; i++) {
+                res4 = LinearSearch.search(data, n);
+            }
+
+            long endTime = System.nanoTime();
+            System.out.println(res4);
+            double time = (endTime - startTime) / 1000000000.0;
+            System.out.println("n = " + n + ", 100 runs : " + time + " s");
+        }
+
     }
 }
